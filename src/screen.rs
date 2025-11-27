@@ -1,5 +1,5 @@
 use agent_stream_kit::{
-    ASKit, Agent, AgentConfigs, AgentContext, AgentData, AgentDefinition, AgentError, AgentOutput,
+    ASKit, Agent, AgentConfigs, AgentContext, AgentDefinition, AgentError, AgentOutput, AgentValue,
     AsAgent, AsAgentData, async_trait, new_agent_boxed,
 };
 use photon_rs::PhotonImage;
@@ -57,7 +57,7 @@ impl AsAgent for ScreenCaptureAgent {
         &mut self,
         ctx: AgentContext,
         _pin: String,
-        _data: AgentData,
+        _value: AgentValue,
     ) -> Result<(), AgentError> {
         let mut screenshot = self.take_screenshot().await?;
 
@@ -73,8 +73,8 @@ impl AsAgent for ScreenCaptureAgent {
             );
         }
 
-        let data = AgentData::image(screenshot);
-        self.try_output(ctx, PIN_IMAGE, data)?;
+        let value = AgentValue::image(screenshot);
+        self.try_output(ctx, PIN_IMAGE, value)?;
 
         Ok(())
     }

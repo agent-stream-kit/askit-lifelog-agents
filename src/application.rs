@@ -1,6 +1,6 @@
 use active_win_pos_rs::get_active_window;
 use agent_stream_kit::{
-    ASKit, Agent, AgentConfigs, AgentContext, AgentData, AgentDefinition, AgentError, AgentOutput,
+    ASKit, Agent, AgentConfigs, AgentContext, AgentDefinition, AgentError, AgentOutput, AgentValue,
     AsAgent, AsAgentData, async_trait, new_agent_boxed,
 };
 use chrono::Utc;
@@ -97,7 +97,7 @@ impl AsAgent for ActiveApplicationAgent {
         &mut self,
         ctx: AgentContext,
         _pin: String,
-        _data: AgentData,
+        _value: AgentValue,
     ) -> Result<(), AgentError> {
         let Some(app_event) = self.check_application().await else {
             return Ok(());
@@ -114,7 +114,7 @@ impl AsAgent for ActiveApplicationAgent {
             return Ok(());
         }
 
-        self.try_output(ctx, PIN_EVENT, AgentData::from_serialize(&app_event)?)
+        self.try_output(ctx, PIN_EVENT, AgentValue::from_serialize(&app_event)?)
     }
 }
 
