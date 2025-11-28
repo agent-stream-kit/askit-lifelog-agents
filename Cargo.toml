@@ -4,6 +4,8 @@ version = "0.2.0"
 edition = "2024"
 authors = ["Akira Ishino <akira@lumilab.jp>"]
 license = "Apache-2.0 OR MIT"
+description = "Lifelog Agents for Agent Stream Kit"
+repository = "https://github.com/agent-stream-kit/askit-lifelog-agents"
 
 [dependencies]
 active-win-pos-rs = { version = "0.9.1", optional = true }
