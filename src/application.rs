@@ -1,3 +1,5 @@
+#![cfg(feature = "application")]
+
 use active_win_pos_rs::get_active_window;
 use agent_stream_kit::{
     ASKit, Agent, AgentConfigs, AgentContext, AgentData, AgentError, AgentOutput, AgentValue,

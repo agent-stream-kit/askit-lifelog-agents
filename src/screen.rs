@@ -1,9 +1,11 @@
+#![cfg(feature = "screen")]
+
+use agent_stream_kit::photon_rs::{self, PhotonImage};
 use agent_stream_kit::{
     ASKit, Agent, AgentConfigs, AgentContext, AgentData, AgentError, AgentOutput, AgentValue,
     AsAgent, async_trait,
 };
 use askit_macros::askit_agent;
-use photon_rs::PhotonImage;
 use xcap::Monitor;
 
 static CATEGORY: &str = "Lifelog";
