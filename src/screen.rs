@@ -77,8 +77,6 @@ impl AsAgent for ScreenCaptureAgent {
         }
 
         let value = AgentValue::image(screenshot);
-        self.try_output(ctx, PIN_IMAGE, value)?;
-
-        Ok(())
+        self.output(ctx, PIN_IMAGE, value).await
     }
 }
