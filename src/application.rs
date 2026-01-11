@@ -119,6 +119,7 @@ impl AsAgent for ActiveApplicationAgent {
             return Ok(());
         }
 
-        self.try_output(ctx, PIN_EVENT, AgentValue::from_serialize(&app_event)?)
+        self.output(ctx, PIN_EVENT, AgentValue::from_serialize(&app_event)?)
+            .await
     }
 }
